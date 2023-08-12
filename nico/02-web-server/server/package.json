@@ -1,0 +1,26 @@
+{
+  "name": "web-server",
+  "version": "1.0.0",
+  "description": "aprendiendo web server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlasCasale/aprendiendo-node.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Blas Casale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BlasCasale/aprendiendo-node/issues"
+  },
+  "homepage": "https://github.com/BlasCasale/aprendiendo-node#readme",
+  "dependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
