@@ -58,7 +58,7 @@ app.get("/ab*cd", ((req, res, next) => { // con * la letra anterior puede estar 
     res.status(200).send(`Ruta: ${url}`);
 }));
 
-app.get("/api/:name/:lastname", ((req, res, next) => { // con * la letra anterior puede estar una vez o todas las que quiera
+app.get("/api/:name/:lastname", ((req, res, next) => {
     const { name, lastname } = req.params;
     // res.status(200).send("Server online");
     res.status(200).json({ name, lastname });

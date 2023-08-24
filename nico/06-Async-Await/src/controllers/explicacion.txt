@@ -1,0 +1,4 @@
+controller
+
+- la funcion que se encarga de interactuar con los datos
+- los controller siempre son asincronos porque trabajan con la base de datos
