@@ -1,12 +1,13 @@
-const { sequelize } = require('../../db');
+// const { DataTypes } = require('sequelize');
+// const { sequelize } = require('../../db');
 
-const Disciplines = sequelize.define("Discipline", {
-    name: {
-        type: DataTypes.STRING
-    },
-    desciption: {
-        type: DataTypes.STRING
-    }
-});
+// const Disciplines = sequelize.define("Discipline", {
+//     name: {
+//         type: DataTypes.STRING
+//     },
+//     desciption: {
+//         type: DataTypes.STRING
+//     }
+// });
 
-// module.exports = { ...sequelize.models };
+// module.exports = Disciplines;

@@ -1,12 +1,13 @@
-const { sequelize } = require('../../db');
+// const { DataTypes } = require('sequelize');
+// const { sequelize } = require('../../db');
 
-const Workshops = sequelize.define("Workshop", {
-    name: {
-        type: DataTypes.STRING
-    },
-    desciption: {
-        type: DataTypes.STRING
-    }
-});
+// const Workshops = sequelize.define("Workshop", {
+//     name: {
+//         type: DataTypes.STRING
+//     },
+//     desciption: {
+//         type: DataTypes.STRING
+//     }
+// });
 
-// module.exports = { ...sequelize.models };
+// module.exports = Workshops;

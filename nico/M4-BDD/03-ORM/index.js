@@ -5,7 +5,7 @@ const { db } = require('./db');
 
 app.listen(PORT, async () => {
     console.log(`Escuchando en el puerto http://localhost:${PORT}`);
-    await db.sync({ force: true }); // con esto sincroniza todas las tablas que tenga
+    await db.sync({ force: false }); // con esto sincroniza todas las tablas que tenga
     // await User.sync();
 });
 

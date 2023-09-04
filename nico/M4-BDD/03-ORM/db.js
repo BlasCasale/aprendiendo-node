@@ -23,8 +23,19 @@ const Workshops = sequelize.define("Workshop", {
     name: {
         type: DataTypes.STRING
     },
-    desciption: {
-        type: DataTypes.STRING
+    description: {
+        type: DataTypes.STRING,
+        set(value) {
+            const data = this.setDataValue("description", value.toLowerCase());
+            return data;
+        }
+    },
+    otra: {
+        type: DataTypes.VIRTUAL,
+        get() {
+            const data = this.getDataValue("name"); // con el this.getDataValue accedo a los datos de mas arriba ("name")
+            return data + "siiii";
+        }
     }
 });
 
@@ -32,7 +43,7 @@ const Disciplines = sequelize.define("Discipline", {
     name: {
         type: DataTypes.STRING
     },
-    desciption: {
+    description: {
         type: DataTypes.STRING
     }
 });
@@ -59,15 +70,23 @@ const Users = sequelize.define("User", { // objeto => model => tabla
 // }
 
 const { User, Discipline, Workshop } = sequelize.models; // aca extraemos los modelos creados
-
-Discipline.hasOne(Workshop); // cada discipline tiene un workshop
+// SET
+Discipline.hasOne(Workshop); // cada discipline tiene un workshop    work.setDiscipline(idDis)
 Workshop.belongsTo(Discipline); // la Foranean Key va en la ultima columna cuando se lo coloca aca
-
-Workshop.hasMany(User); // un workshop tiene varios user setWorkshop
+// SET
+Workshop.hasMany(User); // un workshop tiene varios user setWorkshop  user.setWorkshop(idWork)
 User.belongsTo(Workshop); // y un user tiene un workshop
-
+// ADD
 User.belongsToMany(Discipline, { through: 'UserDiscipline' }); // se crea la tabla intermedia UserDiscipline
 Discipline.belongsToMany(User, { through: 'UserDiscipline' }); // no importa el orden obvio setUser() addUsers([])
+
+/*
+user.addDiscipline(idDis)
+user.addDisciplines([varios id])
+
+discipline.addUser(idUser)
+discipline.addUsers([varios id])
+*/
 
 // sequelize.models.User.create({name, email})
 
