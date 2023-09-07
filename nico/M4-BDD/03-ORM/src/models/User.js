@@ -1,17 +1,35 @@
-// const { DataTypes } = require('sequelize');
-// const { sequelize } = require('../../db');
+const { DataTypes } = require('sequelize');
 
-// const Users = sequelize.define("User", { // objeto => model => tabla
-//     name: {
-//         type: DataTypes.STRING,
-//         allowNull: false
-//     },
-//     email: {
-//         type: DataTypes.STRING,
-//         validate: {
-//             isEmail: true // regex | Validate
-//         }
-//     }
-// });
+const User = (db) => {
+    db.define('User', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        name: {
+            type: DataTypes.STRING(20),
+            allowNull: false
+        },
+        last_name: {
+            type: DataTypes.STRING(30),
+            allowNull: false
+        },
+        mail: {
+            type: DataTypes.STRING,
+            unique: true,
+            validate: {
+                isEmail: true
+            }
+        },
+        birth: {
+            type: DataTypes.DATEONLY,
+            allowNull: false
+        }
+    },
+        {
+            timestamps: false
+        });
+};
 
-// module.exports = Users;
+module.exports = User;
