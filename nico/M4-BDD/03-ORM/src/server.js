@@ -9,7 +9,7 @@ server.use(express.json());
 server.use(cors());
 server.use(router);
 server.use('*', (req, res) => {
-    res.status(404).json({ error: "Not found" });
+    res.status(404).json({ error: "End point not found, please be sure the end point its placed correctly" });
 });
 
 module.exports = server;

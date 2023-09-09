@@ -4,6 +4,6 @@ const { db } = require('./src/db');
 const { PORT } = process.env;
 
 server.listen(PORT, async () => {
-    await db.sync({ force: false });
+    await db.sync({ alter: true });
     console.log(`Listening on http://localhost:${PORT}`);
 });

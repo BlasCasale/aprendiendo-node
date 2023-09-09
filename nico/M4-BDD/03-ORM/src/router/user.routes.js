@@ -1,16 +1,17 @@
 const { Router } = require('express');
-const createUser = require('../controller/createUser');
 const userRouter = Router();
+const getUserHandler = require('../handler/getUserHandler');
+const getAllUsersHandler = require('../handler/getAllUsersHandler');
+const createUserHandler = require('../handler/createUserHandler');
+const deleteUserHandler = require('../handler/deleteUserHandler');
+const createUsersHandler = require('../handler/createUsersHandler');
+const findOrCreateHandler = require('../handler/findOrCreateHandler');
 
-userRouter.post('/', async (req, res) => {
-    // crear un usuario en la db
-    try {
-        const { name, last_name, mail, birth } = req.body;
-        const newUser = await createUser({ name, last_name, mail, birth });
-        res.status(201).json(newUser);
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    };
-});
+userRouter.get('/', getAllUsersHandler); // traer todos los usuarios
+userRouter.get('/findOrCreate', findOrCreateHandler) // crear usuario con findOrCreate
+userRouter.get('/:mail', getUserHandler); // busco un user por mail
+userRouter.post('/', createUserHandler); // crear un usuario en la db
+userRouter.post('/bulk', createUsersHandler); // crear varios usuarios con el bulk
+userRouter.delete('/', deleteUserHandler); // borrar usuario de la bdd con mail
 
 module.exports = userRouter;

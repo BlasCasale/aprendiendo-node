@@ -1,6 +1,7 @@
 const { Sequelize } = require('sequelize');
-const User = require('./models/User');
-const Post = require('./models/Post');
+const UserFunc = require('./models/User');
+const PostFunc = require('./models/Post');
+const PageFunc = require('./models/Page');
 // const { USER, PASS, DB_NAME } = process.env;
 const USER = 'postgres';
 const PASS = 'eminem97.';
@@ -11,8 +12,17 @@ const db = new Sequelize(
     { logging: false }
 );
 
-User(db);
-Post(db);
+UserFunc(db);
+PostFunc(db);
+PageFunc(db);
+
+const { User, Post, Page } = db.models;
+
+User.hasMany(Post);
+Post.belongsTo(User); // post va a tener la FK(id) del User al cual le pertenece el Post
+
+User.belongsToMany(Page, { through: 'UserPage' });
+Page.belongsToMany(User, { through: 'UserPage' });
 
 module.exports = {
     db,
